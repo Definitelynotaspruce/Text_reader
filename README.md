@@ -38,10 +38,12 @@ Tikrinama, ar nuskaityto elemento pirmieji simboliai sutampa su URL.
 
 ### 4. Išvedimas
 
-Rezultatai išvedami į results.txt failą.
+Rezultatai išvedami į *results.txt* failą.
 Tiksliam lygiavimui naudojama funkcija
-``` shel str.length() - std::count_if(str.begin(), str.end(), [](char c) -> bool { return (c & 0xC0) == 0x80; }) ```,
-kuri suskaičiuoja tikslų reikalingų padėti tarpelių skaičių (nes dėl lietuviškų simbolių paprastas lygiavimas susigadina).
+``` shell
+str.length() - std::count_if(str.begin(), str.end(), [](char c) -> bool { return (c & 0xC0) == 0x80; })
+``` 
+Ji suskaičiuoja tikslų reikalingų padėti tarpelių skaičių (nes dėl lietuviškų simbolių paprastas lygiavimas susigadina).
 
 ## Darbo išvados:
 **C++ kalboje sunku dirbti su lietuviškomis raidėmis**
