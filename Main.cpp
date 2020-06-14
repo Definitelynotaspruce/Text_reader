@@ -1,12 +1,11 @@
-#include <iostream>
 #include <vector>
 #include <string>
 #include <map>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
-#include <locale>
 #include <iomanip>
+#include <iostream>
 
 // tikrinimas ar stringas yra url
 bool url_check(std::string word)
@@ -23,30 +22,39 @@ bool only_word(std::string &word)
 {
     if (url_check(word))
         return true;
+
+    // pasalinamas platusis bruksnelis kuris buna lietuviskuose textuose
+    else if (word == "–")
+        return false;
+
     else
-    {
         for (auto &w : word)
-        {
-            if (!isalpha(w)) // tikrinama ar zodzio simbolis yra raide, jeigu ne, simbolis istrinamas
-            {
+            if (ispunct(w) || isdigit(w)) // tikrinama ar zodzio simbolis yra raide, jeigu ne, simbolis istrinamas
                 word.erase(std::remove(word.begin(), word.end(), w), word.end());
-            }
-        }
-    }
+
     return true;
+}
+
+// funkcija, gaunanti tikraji ilgi (kad outputas buut grazesnis)
+inline size_t get_length(const std::string &str)
+{
+    return (str.length() - std::count_if(str.begin(), str.end(), [](char c) -> bool { return (c & 0xC0) == 0x80; }));
 }
 
 void file_output(std::map<std::string, std::pair<int, std::vector<int>>> map_of_words, std::string filename)
 {
-    std::ofstream file;
-    file.open(filename);
+    std::ofstream file(filename);
+
+    file << std::left << std::setw(20) << "Žodis" << std::setw(20) << "Pasikartoja"
+         << "Eilutėse" << std::endl
+         << std::string(80, '-') << std::endl;
 
     for (auto &m : map_of_words)
     {
         if (m.second.first > 1)
         {
-            file << std::setw(15) << std::left << m.first
-                 << std::setw(30) << std::right << m.second.first << "  ";
+            size_t additional = m.first.size() - get_length(m.first);
+            file << std::left << std::setw(20 + additional) << m.first << std::setw(9) << m.second.first << std::right << std::setw(12);
             for (auto &w : m.second.second)
                 file << w << " ";
             file << std::endl;
@@ -64,9 +72,9 @@ void file_output(std::map<std::string, std::pair<int, std::vector<int>>> map_of_
 std::map<std::string, std::pair<int, std::vector<int>>> read_from_file(std::string filename)
 {
     std::map<std::string, std::pair<int, std::vector<int>>> map_of_words;
-    std::ifstream file;
+    std::ifstream file(filename);
     std::string line = " ", word = " ";
-    file.open(filename);
+
     int line_count = 0;
 
     while (std::getline(file, line))
@@ -74,8 +82,11 @@ std::map<std::string, std::pair<int, std::vector<int>>> read_from_file(std::stri
         ++line_count;
         std::istringstream iss(line);
 
-        while (iss >> word && only_word(word))
+        // zodziu nuskaitymas i map'a
+        while (iss >> word)
         {
+            if (!only_word(word))
+                continue;
             if (!word.size())
                 continue;
             if (map_of_words.find(word) == map_of_words.end())
@@ -97,7 +108,7 @@ std::map<std::string, std::pair<int, std::vector<int>>> read_from_file(std::stri
 
 int main()
 {
-    std::map<std::string, std::pair<int, std::vector<int>>> map_of_words = read_from_file("text3.txt");
+    std::map<std::string, std::pair<int, std::vector<int>>> map_of_words = read_from_file("text.txt");
     file_output(map_of_words, "result.txt");
 
     return 0;
