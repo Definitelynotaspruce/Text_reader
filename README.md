@@ -5,6 +5,8 @@
 * Suskaičiuoti, kiek kartų pasikartoja vienodi žodžiai tekste
 * Tekste surasti bei išspausdinti link'us
 
+### Analizuojamas tekstas iš https://diktantas.lt/news/Nacionalinio-diktanto-tekstas
+
 ## Programos veikimas
 
 ### 1. *.txt* failo nuskaitymas
