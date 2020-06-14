@@ -47,6 +47,19 @@ str.length() - std::count_if(str.begin(), str.end(), [](char c) -> bool { return
 ``` 
 Ji suskaičiuoja tikslų reikalingų padėti tarpelių skaičių (nes dėl lietuviškų simbolių paprastas lygiavimas susigadina).
 
+Outputo pavyzdys:
+``` shell
+  
+Žodis              Pasikartoja         Eilutėse
+--------------------------------------------------------------------------------
+Danius              8                   9 9 11 11 11 13 13 19 
+apie                2                   9 9 
+atsispindėjo        2                   7 17 
+buvo                2                   7 7 
+ežero               3                   9 11 13 
+ir                  13                  7 7 9 9 9 11 11 11 11 11 13 17 27 
+```
+
 ## Darbo išvados:
 **C++ kalboje sunku dirbti su lietuviškomis raidėmis**
 
