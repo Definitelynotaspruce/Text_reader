@@ -1,0 +1,35 @@
+Žodis              Pasikartoja         Eilutėse
+--------------------------------------------------------------------------------
+Danius              8                   9 9 11 11 11 13 13 19 
+apie                2                   9 9 
+atsispindėjo        2                   7 17 
+buvo                2                   7 7 
+ežero               3                   9 11 13 
+ir                  13                  7 7 9 9 9 11 11 11 11 11 13 17 27 
+išgirdo             2                  11 21 
+jos                 5                  11 13 15 17 17 
+jų                  5                   9 11 11 11 17 
+kad                 4                   9 11 11 11 
+lyg                 2                  11 11 
+nepaisant           2                   9 9 
+o                   2                   9 17 
+paviršiumi          2                  11 17 
+po                  2                  11 11 
+su                  2                  11 27 
+sėdėjo              2                   9 9 
+tai                 2                  17 17 
+taip                4                   9 13 13 17 
+tarytum             4                   7 7 11 17 
+tylinčių            2                  11 11 
+vandens             2                  11 17 
+vanduo              2                   7 17 
+vartėsi             2                   7 9 
+veidrody            2                   7 9 
+vis                 3                   7 13 17 
+vos                 2                  11 11 
+z                   6                  15 15 15 15 15 15 
+ėmė                 2                  11 13 
+į                   2                   7 9 
+Linkai:
+http://www.vlkk.lt/
+http://www.vlkk.lt/visos-naujienos
