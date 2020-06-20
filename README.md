@@ -2,7 +2,7 @@
 ## Pasikartojančių žodžių paieška tekste, link'ų radimas
 
 ## Programos paskirtis
-* Suskaičiuoti, kiek kartų pasikartoja vienodi žodžiai tekste
+* Suskaičiuoti, kiek kartų pasikartoja vienodi žodžiai tekste, kurių ieško vartotojas
 * Tekste surasti bei išspausdinti link'us
 
 ### Analizuojamas tekstas iš https://diktantas.lt/news/Nacionalinio-diktanto-tekstas
@@ -10,6 +10,8 @@
 ## Programos veikimas
 
 ### 1. *.txt* failo nuskaitymas
+
+Vartotojas įveda ieškomus žodžius.
 
 Duomenų saugojimui naudojamas asociatyvus **std::map** konteineris
 ``` shell
@@ -30,13 +32,8 @@ Patikrinimui naudojamos ispunct() bei isdigit() funkcijos.
 Jeigu tikrinimo metu yra randamas netinkamas simbolis, jis yra ištrinamas.
 
 ### 3. URL tikrinimas
-``` shell
-std::vector<std::string> url = {"http", "www."};
-    for (auto u : url)
-        if (word.substr(0, 4) == u)
-            return true;
-```
-Tikrinama, ar nuskaityto elemento pirmieji simboliai sutampa su URL.
+
+Tikrinama, ar nuskaityto elementas neturi kombinacijos "http" "https" "www."
 
 ### 4. Išvedimas
 
